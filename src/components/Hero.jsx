@@ -1,17 +1,15 @@
-import Spline from '@splinetool/react-spline'
 import { motion } from 'framer-motion'
+import ThreeBackground from './ThreeBackground'
 
 export default function Hero() {
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-      {/* gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+      {/* dynamic three.js background */}
+      <ThreeBackground />
 
-      {/* glowing blobs */}
-      <div className="pointer-events-none absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-fuchsia-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-cyan-500/20 blur-3xl" />
+      {/* subtle overlay gradient for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/20 to-slate-950/70" />
 
-      {/* 3D scene */}
       <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
         <div className="text-center lg:text-left">
           <motion.span
@@ -56,12 +54,40 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* showcase mock device card with parallax hover */}
         <div className="relative h-[420px] sm:h-[520px] lg:h-[620px]">
-          <div className="absolute inset-0 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/40">
-            <Spline scene="https://prod.spline.design/N8g2VNcx8Rycz93J/scene.splinecode" style={{ width: '100%', height: '100%' }} />
-          </div>
-          <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
-          <div className="pointer-events-none absolute -inset-8 bg-gradient-to-b from-white/10 to-transparent rounded-[2rem] blur-3xl" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="group absolute inset-0 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 via-cyan-400/10 to-transparent" />
+            {/* floating cards */}
+            <div className="absolute inset-0 p-6 sm:p-8">
+              <motion.div
+                initial={{ y: 16, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="grid grid-cols-2 gap-4 sm:gap-5"
+              >
+                {[1,2,3,4].map((i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    className="rounded-xl border border-white/10 bg-slate-900/60 p-4 sm:p-5 shadow-lg"
+                  >
+                    <div className="h-20 sm:h-24 rounded-lg bg-gradient-to-br from-slate-700/40 to-slate-800/40 mb-3" />
+                    <div className="h-2 w-24 bg-white/10 rounded mb-2" />
+                    <div className="h-2 w-16 bg-white/10 rounded" />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
+          </motion.div>
+          <div className="pointer-events-none absolute -inset-10 bg-gradient-to-t from-fuchsia-500/10 via-transparent to-transparent rounded-[2rem] blur-2xl" />
         </div>
       </div>
     </section>
