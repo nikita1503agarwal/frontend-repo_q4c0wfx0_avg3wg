@@ -45,8 +45,8 @@ export default function Hero() {
             transition={{ delay: 0.25 }}
             className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
           >
-            <a href="#collections" className="inline-flex items-center justify-center rounded-lg bg-white text-slate-900 px-6 py-3 font-semibold shadow hover:shadow-lg transition-shadow">
-              Shop the collection
+            <a href="#collections" className="inline-flex items-center justify-center rounded-lg bg-white/10 text-white px-6 py-3 font-semibold ring-1 ring-white/20 hover:bg-white/15 transition">
+              Explore collections
             </a>
             <a href="#story" className="inline-flex items-center justify-center rounded-lg bg-transparent text-white px-6 py-3 border border-white/20 hover:border-white/40 transition">
               Our design story
@@ -54,7 +54,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* showcase mock device card with parallax hover */}
+        {/* showcase aesthetic cards (no pricing or shopping) */}
         <div className="relative h-[420px] sm:h-[520px] lg:h-[620px]">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
@@ -79,8 +79,8 @@ export default function Hero() {
                     className="rounded-xl border border-white/10 bg-slate-900/60 p-4 sm:p-5 shadow-lg"
                   >
                     <div className="h-20 sm:h-24 rounded-lg bg-gradient-to-br from-slate-700/40 to-slate-800/40 mb-3" />
-                    <div className="h-2 w-24 bg-white/10 rounded mb-2" />
-                    <div className="h-2 w-16 bg-white/10 rounded" />
+                    <div className="h-2 w-28 bg-white/10 rounded mb-2" />
+                    <div className="h-2 w-20 bg-white/10 rounded" />
                   </motion.div>
                 ))}
               </motion.div>

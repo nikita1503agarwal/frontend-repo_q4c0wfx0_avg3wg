@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Menu, X, ShoppingCart, Search } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 function NavLink({ children, href = '#' }) {
@@ -42,17 +42,11 @@ export default function Navbar() {
               <NavLink href="#contact">Contact</NavLink>
             </nav>
 
-            {/* Actions */}
+            {/* Actions (purely aesthetic) */}
             <div className="hidden md:flex items-center gap-2">
-              <button className="p-2 rounded-lg hover:bg-white/10 text-slate-200">
+              <button className="p-2 rounded-lg hover:bg-white/10 text-slate-200" aria-label="Search">
                 <Search className="h-5 w-5" />
               </button>
-              <button className="p-2 rounded-lg hover:bg-white/10 text-slate-200">
-                <ShoppingCart className="h-5 w-5" />
-              </button>
-              <a href="#" className="ml-2 inline-flex items-center rounded-lg bg-white text-slate-900 px-4 py-2 text-sm font-semibold shadow hover:shadow-lg transition-shadow">
-                Shop Now
-              </a>
             </div>
 
             {/* Mobile toggle */}
@@ -81,15 +75,9 @@ export default function Navbar() {
                   <a href="#materials" onClick={() => setOpen(false)} className="block text-slate-100/90 hover:text-white">Materials</a>
                   <a href="#contact" onClick={() => setOpen(false)} className="block text-slate-100/90 hover:text-white">Contact</a>
                   <div className="pt-2 flex items-center gap-3">
-                    <button className="p-2 rounded-lg hover:bg-white/10 text-slate-200">
+                    <button className="p-2 rounded-lg hover:bg-white/10 text-slate-200" aria-label="Search">
                       <Search className="h-5 w-5" />
                     </button>
-                    <button className="p-2 rounded-lg hover:bg-white/10 text-slate-200">
-                      <ShoppingCart className="h-5 w-5" />
-                    </button>
-                    <a href="#" className="inline-flex items-center rounded-lg bg-white text-slate-900 px-4 py-2 text-sm font-semibold shadow hover:shadow-lg transition-shadow">
-                      Shop Now
-                    </a>
                   </div>
                 </div>
               </motion.div>
